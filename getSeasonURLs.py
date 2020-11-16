@@ -15,7 +15,3 @@ def getSeasonURLs(season):
     if gameRegex.match(href):
       gameURLs.append(href)
   return(gameURLs)
-
-
-getSeasonURLs(20)
-
