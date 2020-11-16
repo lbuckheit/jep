@@ -2,16 +2,17 @@ import urllib.request
 from bs4 import BeautifulSoup
 import re
 
-def getSeasonURLs(season):
+def getSeasonGames(season):
   baseURL = 'https://j-archive.com/showseason.php?season='
   scrapeURL = baseURL + str(season)
   page = urllib.request.urlopen(scrapeURL)
   soup = BeautifulSoup(page.read(), 'lxml')
-  gameURLs = []
+  games = []
   links = soup.find_all('a')
-  gameRegex = re.compile(r'http:\/\/www\.j-archive\.com\/showgame\.php\?game_id=\d+')
+  gameRegex = re.compile(r'http:\/\/www\.j-archive\.com\/showgame\.php\?game_id=(\d+)')
   for link in links:
     href = link['href']
-    if gameRegex.match(href):
-      gameURLs.append(href)
-  return(gameURLs)
+    gameMatch = gameRegex.match(href)
+    if gameMatch:
+      games.append(gameMatch.group(1))
+  return(games)
