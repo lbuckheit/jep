@@ -48,7 +48,7 @@ def lemmatize_sentence(sentence):
     else:        
       #else use the tag to lemmatize the token
       lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
-  return " ".join(lemmatized_sentence)
+  return ' '.join(lemmatized_sentence)
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
@@ -66,10 +66,10 @@ for clue in clues:
   clue = lemmatize_sentence(clue)
   word_cloud_words += clue
 
-wordcloud = WordCloud(width = 800, height = 800, background_color ='white', min_font_size = 10).generate(word_cloud_words) 
+wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min_font_size = 10).generate(word_cloud_words) 
 plt.figure(figsize = (8, 8), facecolor = None) 
 plt.imshow(wordcloud) 
-plt.axis("off") 
+plt.axis('off') 
 plt.title(answer, fontsize = 50)
 plt.tight_layout(pad = 0) 
   
