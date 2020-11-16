@@ -8,10 +8,8 @@ season = 20
 games = getSeasonGames(season)
 
 for index, game in enumerate(games):
-  print('INITIALIZING LOOP')
+  print('SCRAPING GAME')
   print(index)
-  if (index > 10):
-    break
   scrapeGame(game, season)
-  print('GOING TO SLEEP')
-  time.sleep(10)
+  print('GAME SCRAPED - WAITING 15 SECONDS')
+  time.sleep(15)
