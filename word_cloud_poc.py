@@ -1,0 +1,91 @@
+# Sentence lemmataztion from by https://medium.com/@gaurav5430/using-nltk-for-lemmatizing-sentences-c1bfff963258
+import sqlite3
+import nltk
+import string
+import re
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from nltk.corpus import stopwords
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt 
+import pandas as pd
+
+lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words('english'))
+
+def remove_stop_words(sentence):
+  word_tokens = nltk.word_tokenize(sentence)
+  filtered_sentence = [w for w in word_tokens if not w in stop_words]
+  filtered_sentence = []
+  for w in word_tokens: 
+    if w not in stop_words: 
+      filtered_sentence.append(w)  
+  return ' '.join(filtered_sentence)
+
+# function to convert nltk tag to wordnet tag
+def nltk_tag_to_wordnet_tag(nltk_tag):
+  if nltk_tag.startswith('J'):
+    return wordnet.ADJ
+  elif nltk_tag.startswith('V'):
+    return wordnet.VERB
+  elif nltk_tag.startswith('N'):
+    return wordnet.NOUN
+  elif nltk_tag.startswith('R'):
+    return wordnet.ADV
+  else:          
+    return None
+
+def lemmatize_sentence(sentence):
+  #tokenize the sentence and find the POS tag for each token
+  nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))  
+  #tuple of (token, wordnet_tag)
+  wordnet_tagged = map(lambda x: (x[0], nltk_tag_to_wordnet_tag(x[1])), nltk_tagged)
+  lemmatized_sentence = []
+  for word, tag in wordnet_tagged:
+    if tag is None:
+      #if there is no available tag, append the token as is
+      lemmatized_sentence.append(word)
+    else:        
+      #else use the tag to lemmatize the token
+      lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
+  return " ".join(lemmatized_sentence)
+
+con = sqlite3.connect('./jep.db')
+cursor = con.cursor()
+
+answer = 'Richard Nixon'
+query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
+clues = []
+for row in cursor.execute(query):
+  clues.append(row[1])
+
+cursor.close()
+
+# For assistance srtipping all punctuation
+# translator=str.maketrans('', '', string.punctuation)
+
+for clue in clues:
+  clue = clue.lower()
+  clue = remove_stop_words(clue)
+  clue = lemmatize_sentence(clue)
+
+  # Remove all punctuation
+  # clue = clue.translate(translator)
+
+  # Collapse all spaces
+  clue = re.sub(" +" , " ", clue)
+  print(clue)
+
+word_cloud_words = ''
+for clue in clues:
+  word_cloud_words += clue
+
+wordcloud = WordCloud(width = 800, height = 800, background_color ='white', min_font_size = 10).generate(word_cloud_words) 
+# plot the WordCloud image                        
+plt.figure(figsize = (8, 8), facecolor = None) 
+plt.imshow(wordcloud) 
+plt.axis("off") 
+plt.title(answer)
+plt.tight_layout(pad = 0) 
+  
+plt.show() 
