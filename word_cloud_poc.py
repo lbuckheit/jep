@@ -52,7 +52,7 @@ def lemmatize_sentence(sentence):
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-answer = 'Harry Truman'
+answer = 'California'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):
@@ -64,6 +64,7 @@ for clue in clues:
   clue = clue.lower()
   clue = remove_stop_words(clue)
   clue = lemmatize_sentence(clue)
+  clue += ' ' # Gotta add a space after each complete clue so the words don't run together
   word_cloud_words += clue
 
 wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min_font_size = 10).generate(word_cloud_words) 
