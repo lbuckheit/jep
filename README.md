@@ -18,7 +18,7 @@ SELECT COUNT(\*) FROM answers;
 
 -Getting repeated answers above a certain threshold
 
-SELECT answer, count(answer) as dupes
+SELECT answer, COUNT(answer) as dupes
 
 FROM answers
 
