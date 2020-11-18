@@ -12,6 +12,10 @@ SQL Stuff
 
 .mode Column
 
+-Count number of rows
+
+SELECT COUNT(\*) FROM answers;
+
 -Getting repeated answers above a certain threshold
 
 SELECT answer, count(answer) as dupes
@@ -20,6 +24,14 @@ FROM answers
 
 GROUP BY answer
 
-HAVING count(answer) > some_threshold
+HAVING dupes > some_threshold
 
-ORDER BY count(answer) DESC;
+ORDER BY dupes DESC;
+
+-Checking number of distinct games for a given season
+
+SELECT COUNT(DISTINCT gameid) FROM answers WHERE seasonid='some_season';
+
+-Descending list of clues per game (to determine if any games were scraped twice or have a large number of missing clues)
+
+SELECT COUNT(\*) FROM ANSWERS GROUP BY gameid ORDER BY COUNT(\*) DESC

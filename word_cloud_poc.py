@@ -65,6 +65,7 @@ for clue in clues:
   clue = remove_stop_words(clue)
   clue = lemmatize_sentence(clue)
   clue += ' ' # Gotta add a space after each complete clue so the words don't run together
+  clue = clue.replace("'s", '') # Removing posessive esses that get left by the filtering
   word_cloud_words += clue
 
 wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min_font_size = 10).generate(word_cloud_words) 
