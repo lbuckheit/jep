@@ -1,4 +1,4 @@
 testpage.txt
-gameScraper.py
-pageGenerator.py
-getSeasonGames.py
+game_scraper.py
+page_generator.py
+get_season_games.py
