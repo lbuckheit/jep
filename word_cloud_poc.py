@@ -52,7 +52,7 @@ def lemmatize_sentence(sentence):
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-answer = 'Napoleon'
+answer = 'China'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):
@@ -72,7 +72,9 @@ wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min
 plt.figure(figsize = (8, 8), facecolor = None) 
 plt.imshow(wordcloud) 
 plt.axis('off') 
-plt.title(answer, fontsize = 50)
+title = answer + ' | n = ' + str(len(clues))
+plt.title(title, fontsize = 50)
 plt.tight_layout(pad = 0) 
   
-plt.show() 
+# plt.show()
+plt.savefig('test.png')
