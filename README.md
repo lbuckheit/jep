@@ -35,3 +35,7 @@ SELECT COUNT(DISTINCT gameid) FROM answers WHERE seasonid='some_season';
 -Descending list of clues per game (to determine if any games were scraped twice or have a large number of missing clues)
 
 SELECT COUNT(\*) FROM ANSWERS GROUP BY gameid ORDER BY COUNT(\*) DESC
+
+-Checking how many answers there are that are repeated more than a certain threshold
+
+SELECT COUNT(\*) FROM (SELECT answer, COUNT(answer) AS dupes FROM answers GROUP BY answer HAVING dupes > some_threshold ORDER BY dupes DESC);

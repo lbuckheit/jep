@@ -1,11 +1,11 @@
 # Sentence lemmataztion from by https://medium.com/@gaurav5430/using-nltk-for-lemmatizing-sentences-c1bfff963258
 # Various nltk and wordcloud tutorials from geeksforgeeks.com
+
 import sqlite3
 import nltk
 import string
 import re
 import matplotlib.pyplot as plt 
-import pandas as pd
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
@@ -52,11 +52,20 @@ def lemmatize_sentence(sentence):
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-answer = 'China'
+answer = 'Richard Nixon'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):
   clues.append(row[1])
+
+# An attempt to capture the "only last name required" nature of Jeopardy
+split_answer = answer.split(' ')
+words_in_answer = len(split_answer)
+if words_in_answer > 1:
+  alternate_answer = split_answer[-1]
+  query = 'SELECT * FROM answers WHERE answer="' + alternate_answer + '"'
+  for row in cursor.execute(query):
+    clues.append(row[1])
 cursor.close()
 
 word_cloud_words = ''
@@ -76,5 +85,4 @@ title = answer + ' | n = ' + str(len(clues))
 plt.title(title, fontsize = 50)
 plt.tight_layout(pad = 0) 
   
-# plt.show()
-plt.savefig('test.png')
+plt.show()

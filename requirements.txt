@@ -7,3 +7,5 @@ numpy
 pillow
 matplotlib
 pandas
+scipy
+sklearn

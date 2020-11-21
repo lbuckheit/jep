@@ -6,7 +6,6 @@ import nltk
 import string
 import re
 import matplotlib.pyplot as plt 
-import pandas as pd
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
@@ -37,17 +36,17 @@ def nltk_tag_to_wordnet_tag(nltk_tag):
 
 def lemmatize_sentence(sentence):
   lemmatizer = WordNetLemmatizer()
-  #tokenize the sentence and find the POS tag for each token
+  # Tokenize the sentence and find the POS tag for each token
   nltk_tagged = nltk.pos_tag(nltk.word_tokenize(sentence))  
-  #tuple of (token, wordnet_tag)
+  # Tuple of (token, wordnet_tag)
   wordnet_tagged = map(lambda x: (x[0], nltk_tag_to_wordnet_tag(x[1])), nltk_tagged)
   lemmatized_sentence = []
   for word, tag in wordnet_tagged:
     if tag is None:
-      #if there is no available tag, append the token as is
+      # If there is no available tag, append the token as is
       lemmatized_sentence.append(word)
     else:        
-      #else use the tag to lemmatize the token
+      # Else use the tag to lemmatize the token
       lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
 
   return ' '.join(lemmatized_sentence)
@@ -59,7 +58,18 @@ def get_clues(answer):
   clues = []
   for row in cursor.execute(query):
     clues.append(row[1])
+
+  # Capturing the "only last name required" nature of Jeopardy clues
+  # This isn't a perfect method, and will capture some false positives, but it should nonetheless be helpful
+  split_answer = answer.split(' ')
+  words_in_answer = len(split_answer)
+  if words_in_answer > 1:
+    alternate_answer = split_answer[-1]
+    query = 'SELECT * FROM answers WHERE answer="' + alternate_answer + '"'
+    for row in cursor.execute(query):
+      clues.append(row[1])
   cursor.close()
+  
   return clues
 
 def merge_clues(clues):
