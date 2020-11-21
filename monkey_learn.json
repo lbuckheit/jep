@@ -1,0 +1,375 @@
+[
+  {
+    "text": "Cleopatra,Afghanistan,Minnesota,Iceland,Wyoming,Rome,New Mexico,Missouri,Galileo,Beethoven,Kansas,Berlin,Athens,Alabama,Scotland,Eisenhower,David,Atlanta,New Jersey,Maryland,Thomas Jefferson,Tennessee,Mercury,FDR,Alexander \nthe Great,Mozart,Mississippi,Mark Twain,Kentucky,Teddy Roosevelt,Jerusalem,Colombia,Vienna,Turkey,Nebraska,Montana,Madagascar,Indiana,Harvard,Benjamin Franklin,World War I,Saudi Arabia,Oklahoma,Moses,Austria,Rhode Island,Panama,Pakistan,Othello,Nixon,Idaho,Ford,silver,Vietnam,Jupiter,England,Antarctica,oxygen,gold,Marie Antoinette,George Washington,Algeria,Wisconsin,Richard Nixon,Oregon,Morocco,Abraham Lincoln,iron,",
+    "external_id": null,
+    "error": false,
+    "extractions": [
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "David",
+        "parsed_value": "David",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Scotland",
+        "parsed_value": "Scotland",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Kentucky",
+        "parsed_value": "Kentucky",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "FDR",
+        "parsed_value": "FDR",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Afghanistan",
+        "parsed_value": "Afghanistan",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Thomas Jefferson",
+        "parsed_value": "Thomas Jefferson",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Madagascar",
+        "parsed_value": "Madagascar",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Wisconsin",
+        "parsed_value": "Wisconsin",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Panama",
+        "parsed_value": "Panama",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Indiana",
+        "parsed_value": "Indiana",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Austria",
+        "parsed_value": "Austria",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Alexander the Great",
+        "parsed_value": "Alexander the Great",
+        "count": 1
+      },
+      {
+        "tag_name": "COMPANY",
+        "extracted_text": "Ford",
+        "parsed_value": "Ford",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "New Mexico",
+        "parsed_value": "New Mexico",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Idaho",
+        "parsed_value": "Idaho",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Beethoven",
+        "parsed_value": "Beethoven",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Morocco",
+        "parsed_value": "Morocco",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Oklahoma",
+        "parsed_value": "Oklahoma",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Jupiter",
+        "parsed_value": "Jupiter",
+        "count": 1
+      },
+      {
+        "tag_name": "COMPANY",
+        "extracted_text": "Harvard",
+        "parsed_value": "Harvard",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Athens",
+        "parsed_value": "Athens",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Rome",
+        "parsed_value": "Rome",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Richard Nixon",
+        "parsed_value": "Richard Nixon",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Rhode Island",
+        "parsed_value": "Rhode Island",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Eisenhower",
+        "parsed_value": "Eisenhower",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Alabama",
+        "parsed_value": "Alabama",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Wyoming",
+        "parsed_value": "Wyoming",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Atlanta",
+        "parsed_value": "Atlanta",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Turkey",
+        "parsed_value": "Turkey",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Mozart",
+        "parsed_value": "Mozart",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Cleopatra",
+        "parsed_value": "Cleopatra",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Vienna",
+        "parsed_value": "Vienna",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Benjamin Franklin",
+        "parsed_value": "Benjamin Franklin",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Colombia",
+        "parsed_value": "Colombia",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Missouri",
+        "parsed_value": "Missouri",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Tennessee",
+        "parsed_value": "Tennessee",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Nebraska",
+        "parsed_value": "Nebraska",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "George Washington",
+        "parsed_value": "George Washington",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Marie Antoinette",
+        "parsed_value": "Marie Antoinette",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "New Jersey",
+        "parsed_value": "New Jersey",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Kansas",
+        "parsed_value": "Kansas",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "England",
+        "parsed_value": "England",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Berlin",
+        "parsed_value": "Berlin",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Nixon",
+        "parsed_value": "Nixon",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Mark Twain",
+        "parsed_value": "Mark Twain",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Oregon",
+        "parsed_value": "Oregon",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Jerusalem",
+        "parsed_value": "Jerusalem",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Minnesota",
+        "parsed_value": "Minnesota",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Antarctica",
+        "parsed_value": "Antarctica",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Algeria",
+        "parsed_value": "Algeria",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Iceland",
+        "parsed_value": "Iceland",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Mississippi",
+        "parsed_value": "Mississippi",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Teddy Roosevelt",
+        "parsed_value": "Teddy Roosevelt",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Pakistan",
+        "parsed_value": "Pakistan",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Maryland",
+        "parsed_value": "Maryland",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Montana",
+        "parsed_value": "Montana",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Vietnam",
+        "parsed_value": "Vietnam",
+        "count": 1
+      },
+      {
+        "tag_name": "PERSON",
+        "extracted_text": "Abraham Lincoln",
+        "parsed_value": "Abraham Lincoln",
+        "count": 1
+      },
+      {
+        "tag_name": "COMPANY",
+        "extracted_text": "Galileo",
+        "parsed_value": "Galileo",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Moses",
+        "parsed_value": "Moses",
+        "count": 1
+      },
+      {
+        "tag_name": "LOCATION",
+        "extracted_text": "Saudi Arabia",
+        "parsed_value": "Saudi Arabia",
+        "count": 1
+      }
+    ]
+  }
+]

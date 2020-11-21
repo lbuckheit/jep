@@ -61,6 +61,7 @@ def get_clues(answer):
 
   # Capturing the "only last name required" nature of Jeopardy clues
   # This isn't a perfect method, and will capture some false positives, but it should nonetheless be helpful
+  # This doesn't add anything to non-person answers, but it also shouldn't make those appreciably less accurate in most cases
   split_answer = answer.split(' ')
   words_in_answer = len(split_answer)
   if words_in_answer > 1:
@@ -69,7 +70,7 @@ def get_clues(answer):
     for row in cursor.execute(query):
       clues.append(row[1])
   cursor.close()
-  
+
   return clues
 
 def merge_clues(clues):
@@ -91,6 +92,6 @@ def write_word_cloud_to_file(answer, clues):
   plt.imshow(wordcloud) 
   plt.axis('off') 
   title = answer + ' | n = ' + str(len(clues))
-  plt.title(title, fontsize = 50)
+  plt.title(title, fontsize = 35)
   plt.tight_layout(pad = 0) 
   plt.savefig('./word_clouds/' + answer + '.png')

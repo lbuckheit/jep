@@ -52,7 +52,7 @@ def lemmatize_sentence(sentence):
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-answer = 'Richard Nixon'
+answer = 'Timbuktu'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):
@@ -82,7 +82,7 @@ plt.figure(figsize = (8, 8), facecolor = None)
 plt.imshow(wordcloud) 
 plt.axis('off') 
 title = answer + ' | n = ' + str(len(clues))
-plt.title(title, fontsize = 50)
+plt.title(title, fontsize = 35)
 plt.tight_layout(pad = 0) 
   
 plt.show()
