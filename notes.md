@@ -8,7 +8,7 @@ TODO - Break some of these functions out into other files?
 
 TODO - Handle quotes in answers? (which I guess happens when Alex has to say the answer after a triple stumper?) (See "On, Wisconsin", game S25URL3070)
 
-TODO - Learn how to do template strings rather than concatenation in Python
+TODO - Move to formatted strings rather than concatenation
 
 TODO - Marie Antoinette? (Still some strangeness with foreign words?) (This actually seems to be working now)
 

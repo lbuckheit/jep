@@ -5,12 +5,11 @@
 # https://patents.google.com/patent/US20080071519
 
 # Ideas
-# Could first break into named entities and not
 # Then can run word2vec on the non named entities to cluster
 # Clustering the named entities is tougher, but they might be broken down enough that manual is practical
 
 # Notes
-# Gonna scrape the MonkeyLearn API for NER
+# Gonna scrape the MonkeyLearn API for NER (https://app.monkeylearn.com/main/extractors/ex_isnnZRbS/tab/demo/)
 # Works of art are a notable weakness here
 
 import sqlite3
@@ -89,5 +88,5 @@ print('Locations: {}'.format(locs))
 
 # Improperly tagged as LOCATION: Orson Welles, Venus (kinda), Teddy Roosevelt, Hercules, Dracula, Churchill, West Side Story, Florence Nightengale, Wurthering Heights, Amazon (kinda), Beowulf, Lolita, St. Paul (kinda), Mir (kinda), Gweneth Paltrow, Merlin, Swan Lake, Medea, Bambi
 # Improperly tagged as PERSON:
-# Improperly tagged as ORGANIZATION: ABBA, Lincoln, Monaco, Islam(?), Galileo, Rembrandt, Niagara Falls, Brigham Young, Columbus, Stanford(weird one), Edison, Voltaire, Eminem, Orion, Monet, Westminster Abbey, King Kong, East of Eden, Athena, Tolkien, MacArthur, Odysseus, Magellan, Hermes, Brave New World, Animal House, Wings, Star Trek, LBJ, Goya, Canterbury, Valley Forge, Stuart Little, Pegasus, Marconi, Liverpool (kinda), American Samoa
+# Improperly tagged as ORGANIZATION: ABBA, Lincoln, Monaco, Islam(?), Galileo, Rembrandt, Niagara Falls, Brigham Young, Columbus, Stanford(weird one), Edison, Voltaire, Eminem, Orion, Monet, Westminster Abbey, King Kong, East of Eden, Athena, Tolkien, MacArthur, Odysseus, Magellan, Hermes, Brave New World, Animal House, Wings, Star Trek, LBJ, Goya, Canterbury, Valley Forge, Stuart Little, Pegasus, Marconi, Liverpool (kinda), American Samoa, Plymouth (kinda)
 # Improperly tagged as NNE: 
