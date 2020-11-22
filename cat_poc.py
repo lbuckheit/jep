@@ -32,6 +32,7 @@ for row in cursor.execute(query):
 # Initially want to fill database with all most common answers, then we append entities where we know, then we mark whatever's left as a non-named entity
 for answer in initial_insertions:
   answer = answer.replace("'", "''") # Escape single quotes for DB insert purposes
+  answer = answer.replace('\\', '')
   insert_query = "INSERT INTO most_common ('answer') VALUES ('{}');".format(answer)
   cursor.execute(insert_query)
 con.commit()
@@ -66,9 +67,15 @@ for extraction in extractions:
     locs += 1
 con.commit()
 
-# An issue we run into here is when it parses an entity but doesn't match the full answer (i.e. 'Dr. Strangelove' is in the DB, but the json only has a parsed value for 'Strangelove')
+# An issue we run into here is when it parses an entity but doesn't match the full answer (i.e. 'Dr. Strangelove' is in the DB, but the json only has a parsed value for 'Strangelove') (Bad example because this is actually one where it SHOULD be a NNE but still)
+# There's 107 mismatched entries
+# Would be good to separate these out so they don't get grouped with actual NNEs
 fill_blank_query = "UPDATE most_common SET entity = 'NNE' WHERE entity IS NULL;"
 cursor.execute(fill_blank_query)
+con.commit()
+
+change_company_to_org = "UPDATE most_common SET entity = 'ORGANIZATION' WHERE entity = 'COMPANY';"
+cursor.execute(change_company_to_org)
 con.commit()
 
 cursor.close()
@@ -80,4 +87,7 @@ print('People: {}'.format(people))
 print('Organizations: {}'.format(orgs))
 print('Locations: {}'.format(locs))
 
-# Perhaps save these mappings in a table?
+# Improperly tagged as LOCATION: Orson Welles, Venus (kinda), Teddy Roosevelt, Hercules, Dracula, Churchill, West Side Story, Florence Nightengale, Wurthering Heights, Amazon (kinda), Beowulf, Lolita, St. Paul (kinda), Mir (kinda), Gweneth Paltrow, Merlin, Swan Lake, Medea, Bambi
+# Improperly tagged as PERSON:
+# Improperly tagged as ORGANIZATION: ABBA, Lincoln, Monaco, Islam(?), Galileo, Rembrandt, Niagara Falls, Brigham Young, Columbus, Stanford(weird one), Edison, Voltaire, Eminem, Orion, Monet, Westminster Abbey, King Kong, East of Eden, Athena, Tolkien, MacArthur, Odysseus, Magellan, Hermes, Brave New World, Animal House, Wings, Star Trek, LBJ, Goya, Canterbury, Valley Forge, Stuart Little, Pegasus, Marconi, Liverpool (kinda), American Samoa
+# Improperly tagged as NNE: 
