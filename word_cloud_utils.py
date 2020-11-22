@@ -95,3 +95,4 @@ def write_word_cloud_to_file(answer, clues, entity):
   plt.title(title, fontsize = 35)
   plt.tight_layout(pad = 0) 
   plt.savefig('./word_clouds/{}/{}.png'.format(entity.lower(), answer))
+  plt.close()

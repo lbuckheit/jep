@@ -32,8 +32,8 @@ for answer in unset_entities:
 con.commit()
 
 # Next update the LOCATIONs
-loc_to_person = ['Venus', 'St. Paul', 'Medea']
-loc_also_person = ['Orson Welles', 'Teddy Roosevelt', 'Hercules', 'Dracula', 'Churchill', 'Florence Nightengale', 'Gweneth Paltrow', 'Merlin']
+loc_to_person = ['Orson Welles', 'Teddy Roosevelt', 'Hercules', 'Dracula', 'Churchill', 'Florence Nightengale', 'Gweneth Paltrow', 'Merlin']
+loc_also_person = ['Venus', 'St. Paul']
 loc_also_org = ['Amazon']
 loc_to_uncat = ['West Side Story', 'Wurthering Heights', 'Beowulf', 'Lolita', 'Swan Lake', 'Bambi']
 
@@ -56,11 +56,11 @@ for answer in loc_to_uncat:
 # Next update the PERSONs
 person_to_uncat = ['Aerosmith', 'Gladiator']
 person_also_org = ['Duke']
-for answer in loc_also_person:
+for answer in person_to_uncat:
   update_query = 'UPDATE most_common SET person = 0 WHERE answer = "{}"'.format(answer)
   cursor.execute(update_query)
 
-for answer in loc_also_person:
+for answer in person_also_org:
   update_query = 'UPDATE most_common SET organization = 1 WHERE answer = "{}"'.format(answer)
   cursor.execute(update_query)
 
@@ -69,7 +69,7 @@ org_to_person = ['Lincoln', 'Galileo', 'Rembrandt', 'Brigham Young', 'Columbus',
 org_also_person = ['Stanford']
 org_to_loc = ['Monaco', 'Niagara Falls', 'Westminster Abbey', 'Canterbury', 'Valley Forge', 'American Samoa']
 org_also_loc = ['Liverpool', 'Plymouth']
-org_to_uncat = ['ABBA', 'Islam', 'East of Eden', 'Brave New World', 'Animal House', 'Wings', 'Star Trek']
+org_to_uncat = ['ABBA', 'Islam', 'East of Eden', 'Brave New World', 'Animal House', 'Wings', 'Star Trek', 'R.E.M.']
 
 for answer in org_to_person:
   update_query = 'UPDATE most_common SET organization = 0, person = 1 WHERE answer = "{}"'.format(answer)
