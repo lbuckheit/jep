@@ -52,7 +52,7 @@ def lemmatize_sentence(sentence):
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-answer = 'Timbuktu'
+answer = 'Mozart'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):

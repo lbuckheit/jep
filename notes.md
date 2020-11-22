@@ -10,7 +10,7 @@ TODO - Handle quotes in answers? (which I guess happens when Alex has to say the
 
 TODO - Learn how to do template strings rather than concatenation in Python
 
-TODO - Marie Antoinette? (Still some strangeness with foreign words)
+TODO - Marie Antoinette? (Still some strangeness with foreign words?) (This actually seems to be working now)
 
 TODO - Abbreviation/nickname handling (FDR, JFK, etc.)
 

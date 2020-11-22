@@ -17,10 +17,12 @@ import sqlite3
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-query = 'SELECT answer FROM answers GROUP BY answer HAVING COUNT(answer) >= 45 AND COUNT(answer) <= 60 ORDER BY COUNT(answer) DESC;'
+query = 'SELECT answer FROM answers GROUP BY answer HAVING COUNT(answer) >= 23 ORDER BY COUNT(answer) DESC;'
 process_string = ''
 idx = 0
+total_answers = 0
 for row in cursor.execute(query):
+  total_answers += 1
   idx += 1
   answer = row[0]
   process_string += answer + ','
@@ -30,16 +32,19 @@ cursor.close()
 # Then manually process this with MonkeyLearn (https://app.monkeylearn.com/main/extractors/ex_isnnZRbS/tab/demo/) and save the results in a file somewhere
 
 import json
+from string import Template
 with open('monkey_learn.json', 'r') as read_file:
     data = json.load(read_file)
 
 extractions = data[0]['extractions']
 
+named_entities = 0
 people = 0
 orgs = 0
 locs = 0
 
 for extraction in extractions:
+  named_entities += 1
   tag = extraction['tag_name']
   if tag == 'PERSON':
     people += 1
@@ -48,8 +53,10 @@ for extraction in extractions:
   elif tag == 'LOCATION':
     locs += 1
 
-print(people)
-print(orgs)
-print(locs)
+print('Total: {}'.format(total_answers))
+print('Named Entities: {}'.format(named_entities))
+print('People: {}'.format(people))
+print('Organizations: {}'.format(orgs))
+print('Locations: {}'.format(locs))
 
 # Perhaps save these mappings in a table?

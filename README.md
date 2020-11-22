@@ -2,9 +2,7 @@ WIP
 
 The end goal of this project is to generate some tools to help with Jeopardy study, ranging from simple flash cards to more complex analysis
 
-The files that actually scrape J! Archive have been intentionally omitted from the repo since scraping it without limits is discouraged.  My personal scrapes will have some safeguards on them to avoid overloading their servers and generally being a nuisance.
-
-Eventually the complete clue/answer database will be available here which is the end goal of the scraping anyway.
+The files that actually scrape J! Archive have been intentionally omitted from the repo since scraping it is discouraged.  My personal scrapes will have some safeguards on them to avoid overloading their servers and generally being a nuisance.
 
 SQL Stuff
 
@@ -18,15 +16,7 @@ SELECT COUNT(\*) FROM answers;
 
 -Getting repeated answers above a certain threshold
 
-SELECT answer, COUNT(answer) AS dupes
-
-FROM answers
-
-GROUP BY answer
-
-HAVING dupes > some_threshold
-
-ORDER BY dupes DESC;
+SELECT answer, COUNT(answer) AS dupes FROM answers GROUP BY answer HAVING dupes > some_threshold ORDER BY dupes DESC;
 
 -Checking number of distinct games for a given season
 
