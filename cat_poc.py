@@ -16,7 +16,7 @@ import sqlite3
 
 con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
-query = 'SELECT answer FROM answers GROUP BY answer HAVING COUNT(answer) >= 23 ORDER BY COUNT(answer) DESC;'
+query = 'SELECT answer FROM answers GROUP BY answer HAVING COUNT(answer) >= 23 ORDER BY COUNT(answer) DESC;' # Set the threshold to one occurance per season (23 seasons in the DB)
 process_string = ''
 initial_insertions = []
 idx = 0
@@ -56,37 +56,23 @@ for extraction in extractions:
   named_entities += 1
   answer = extraction['parsed_value']
   tag = extraction['tag_name']
-  update_query = "UPDATE most_common SET entity = '{}' WHERE answer = '{}';".format(tag, answer)
-  cursor.execute(update_query)
   if tag == 'PERSON':
     people += 1
   elif tag == 'COMPANY':
+    tag = 'ORGANIZATION'
     orgs += 1
   elif tag == 'LOCATION':
     locs += 1
-con.commit()
+  update_query = "UPDATE most_common SET {} = 1 WHERE answer = '{}';".format(tag, answer)
+  cursor.execute(update_query)
 
+con.commit()
 # An issue we run into here is when it parses an entity but doesn't match the full answer (i.e. 'Dr. Strangelove' is in the DB, but the json only has a parsed value for 'Strangelove') (Bad example because this is actually one where it SHOULD be a NNE but still)
 # There's 107 mismatched entries
-# Would be good to separate these out so they don't get grouped with actual NNEs
-fill_blank_query = "UPDATE most_common SET entity = 'NNE' WHERE entity IS NULL;"
-cursor.execute(fill_blank_query)
-con.commit()
-
-change_company_to_org = "UPDATE most_common SET entity = 'ORGANIZATION' WHERE entity = 'COMPANY';"
-cursor.execute(change_company_to_org)
-con.commit()
 
 cursor.close()
-
-
 print('Total: {}'.format(total_answers))
 print('Named Entities: {}'.format(named_entities))
 print('People: {}'.format(people))
 print('Organizations: {}'.format(orgs))
 print('Locations: {}'.format(locs))
-
-# Improperly tagged as LOCATION: Orson Welles, Venus (kinda), Teddy Roosevelt, Hercules, Dracula, Churchill, West Side Story, Florence Nightengale, Wurthering Heights, Amazon (kinda), Beowulf, Lolita, St. Paul (kinda), Mir (kinda), Gweneth Paltrow, Merlin, Swan Lake, Medea, Bambi
-# Improperly tagged as PERSON:
-# Improperly tagged as ORGANIZATION: ABBA, Lincoln, Monaco, Islam(?), Galileo, Rembrandt, Niagara Falls, Brigham Young, Columbus, Stanford(weird one), Edison, Voltaire, Eminem, Orion, Monet, Westminster Abbey, King Kong, East of Eden, Athena, Tolkien, MacArthur, Odysseus, Magellan, Hermes, Brave New World, Animal House, Wings, Star Trek, LBJ, Goya, Canterbury, Valley Forge, Stuart Little, Pegasus, Marconi, Liverpool (kinda), American Samoa, Plymouth (kinda)
-# Improperly tagged as NNE: 

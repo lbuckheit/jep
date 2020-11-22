@@ -85,7 +85,7 @@ def merge_clues(clues):
 
   return word_cloud_words
 
-def write_word_cloud_to_file(answer, clues):
+def write_word_cloud_to_file(answer, clues, entity):
   words = merge_clues(clues)
   wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min_font_size = 10).generate(words) 
   plt.figure(figsize = (8, 8), facecolor = None) 
@@ -94,4 +94,4 @@ def write_word_cloud_to_file(answer, clues):
   title = answer + ' | n = ' + str(len(clues))
   plt.title(title, fontsize = 35)
   plt.tight_layout(pad = 0) 
-  plt.savefig('./word_clouds/' + answer + '.png')
+  plt.savefig('./word_clouds/{}/{}.png'.format(entity.lower(), answer))
