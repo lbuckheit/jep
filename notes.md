@@ -2,6 +2,8 @@
 -Some ideas: Trivia Research Equipment (for) Broad Enhancement (of) Knowledge - T.R.E.B.E.K.
 
 ### Master project TODOs
+TODO - Categorization, more review of entity types
+
 TODO - Evaluate the alternate_answer handling (perhaps only try the last name thing if the NLP determines that it's a person?  This is probably necessary to handle South Africa, New York, etc.)
 
 TODO - NLP to group answers (HARD) (Word2Vec, doc2Vec, GloVe, https://www.kylepoole.me/blog/20200912_Wikipedia_Quiz/) (Is this even necessary or practical?)
@@ -25,8 +27,6 @@ TODO - Get that last game that failed scraping
 TODO - Some of the answers still have stop words in them (e.g. the liver, an elephant).  I think ideally what I would have done is strip stop words on the initial scrape. Perhaps I can do this when I re scrape to save the pages
 
 TODO - Do I need all these re.complie lines?
-
-TODO - most_common table, null vs 0
 
 ### Stretch goals
 -Knowledge analyzer like Roger Craig made
