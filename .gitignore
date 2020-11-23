@@ -1,8 +1,5 @@
-testpage.txt
-scrape_game.py
-page_generator.py
-get_season_games.py
+raw_scrapers
 __pycache__
 word_clouds
-word_cloud_poc.py
-training_data
+testpage.txt
+page_generator.py
