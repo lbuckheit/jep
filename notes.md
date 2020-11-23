@@ -26,6 +26,8 @@ TODO - Some of the answers still have stop words in them (e.g. the liver, an ele
 
 TODO - Do I need all these re.complie lines?
 
+TODO - most_common table, null vs 0
+
 ### Stretch goals
 -Knowledge analyzer like Roger Craig made
 

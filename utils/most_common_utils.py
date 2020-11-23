@@ -96,7 +96,7 @@ def update_entity_columns():
   loc_to_uncat = ['West Side Story', 'Wurthering Heights', 'Beowulf', 'Lolita', 'Swan Lake', 'Bambi']
 
   for answer in loc_to_person:
-    update_query = 'UPDATE most_common SET person = 1, location = 0 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET person = 1, location = NULL WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   for answer in loc_also_person:
@@ -108,14 +108,14 @@ def update_entity_columns():
     cursor.execute(update_query)
 
   for answer in loc_to_uncat:
-    update_query = 'UPDATE most_common SET location = 0 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET location = NULL WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   # Next update the PERSONs
   person_to_uncat = ['Aerosmith', 'Gladiator']
   person_also_org = ['Duke']
   for answer in person_to_uncat:
-    update_query = 'UPDATE most_common SET person = 0 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET person = NULL WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   for answer in person_also_org:
@@ -130,7 +130,7 @@ def update_entity_columns():
   org_to_uncat = ['ABBA', 'Islam', 'East of Eden', 'Brave New World', 'Animal House', 'Wings', 'Star Trek', 'R.E.M.']
 
   for answer in org_to_person:
-    update_query = 'UPDATE most_common SET organization = 0, person = 1 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET organization = NULL, person = 1 WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   for answer in org_also_person:
@@ -138,7 +138,7 @@ def update_entity_columns():
     cursor.execute(update_query)
 
   for answer in org_to_loc:
-    update_query = 'UPDATE most_common SET organization = 0, location = 1 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET organization = NULL, location = 1 WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   for answer in org_also_loc:
@@ -146,7 +146,7 @@ def update_entity_columns():
     cursor.execute(update_query)
 
   for answer in org_to_uncat:
-    update_query = 'UPDATE most_common SET organization = 0 WHERE answer = "{}"'.format(answer)
+    update_query = 'UPDATE most_common SET organization = NULL WHERE answer = "{}"'.format(answer)
     cursor.execute(update_query)
 
   con.commit()

@@ -3,10 +3,10 @@ from utils.word_cloud_utils import remove_stop_words, nltk_tag_to_wordnet_tag, l
 
 con = sqlite3.connect('./data/jep.db')
 cursor = con.cursor()
-entity = 'ORGANIZATION' # Edit this to grab different batches
+entity = 'organization' # Edit this to grab different batches (person, location, organization, nne)
 query = 'SELECT answer FROM most_common WHERE {} = 1'.format(entity)
 if not entity: 
-  query = 'SELECT answer FROM most_common WHERE person = 0, organization = 0, location = 0, nne = 0;'
+  query = 'SELECT answer FROM most_common WHERE person IS NULL AND organization IS NULL AND location IS NULL AND nne IS NULL;'
 count = 0
 
 for row in cursor.execute(query):
