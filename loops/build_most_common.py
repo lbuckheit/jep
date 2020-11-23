@@ -11,6 +11,8 @@
 # https://www.aclweb.org/anthology/W15-1830.pdf
 # https://patents.google.com/patent/US20080071519
 
+import sys
+sys.path.append("..")
 from utils.most_common_utils import get_most_common, initially_populate_table, process_api_response, update_entity_columns
 
 most_common_obj = get_most_common()
