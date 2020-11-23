@@ -50,9 +50,9 @@ def lemmatize_sentence(sentence):
       lemmatized_sentence.append(lemmatizer.lemmatize(word, tag))
   return ' '.join(lemmatized_sentence)
 
-con = sqlite3.connect('./jep.db')
+con = sqlite3.connect('../data/jep.db')
 cursor = con.cursor()
-answer = 'AC/DC'
+answer = 'Timbuktu'
 query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
 clues = []
 for row in cursor.execute(query):
@@ -77,7 +77,7 @@ for clue in clues:
   clue = clue.replace("'s", '') # Removing posessive esses that get left by the filtering
   word_cloud_words += clue
 
-wordcloud = WordCloud(width = 800, height = 800, background_color = 'white', min_font_size = 10).generate(word_cloud_words) 
+wordcloud = WordCloud(width = 800, height = 400, background_color = 'black', min_font_size = 10).generate(word_cloud_words) 
 plt.figure(figsize = (8, 8), facecolor = None) 
 plt.imshow(wordcloud) 
 plt.axis('off') 
