@@ -5,6 +5,8 @@ con = sqlite3.connect('./jep.db')
 cursor = con.cursor()
 entity = 'ORGANIZATION' # Edit this to grab different batches
 query = 'SELECT answer FROM most_common WHERE {} = 1'.format(entity)
+if not entity: 
+  query = 'SELECT answer FROM most_common WHERE person = 0, organization = 0, location = 0, nne = 0;'
 count = 0
 
 for row in cursor.execute(query):
