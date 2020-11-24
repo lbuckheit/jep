@@ -17,7 +17,7 @@ for idx, answer in enumerate(answers):
     clue = row[1]
     category = row[4]
     # category = ''
-    doc = '{} {} {}'.format(category, clue, answer)
+    doc = '{} {} {}'.format(category, clue, '') # Not sure whether to include the answer over and over again or not
     # doc = remove_stop_words(doc)
     # doc = lemmatize_sentence(doc)
     doc_string += ' {}'.format(doc)

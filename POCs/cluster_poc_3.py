@@ -20,7 +20,7 @@ vectorizer = TfidfVectorizer(stop_words='english')
 Y = vectorizer.fit_transform(documents).todense()
 
 true_k = 40 # 35 Seemed to work pretty well @ 2500 clues, so just trying stuff in a range around there
-model = KMeans(n_clusters=true_k, init='k-means++', max_iter=250, n_init=1)
+model = KMeans(n_clusters=true_k, init='k-means++', max_iter=500, n_init=1)
 model.fit(Y)
 
 cluster_obj = {}
