@@ -6,7 +6,7 @@ TODO - Categorization, more review of entity types
 
 TODO - Evaluate the alternate_answer handling (perhaps only try the last name thing if the NLP determines that it's a person?  This is probably necessary to handle South Africa, New York, etc.)
 
-TODO - NLP to group answers (HARD) (Word2Vec, doc2Vec, GloVe, https://www.kylepoole.me/blog/20200912_Wikipedia_Quiz/) (Is this even necessary or practical?)
+TODO - NLP to group answers (HARD) (Word2Vec, doc2Vec, GloVe) (https://pythonprogramminglanguage.com/kmeans-elbow-method/, https://pythonprogramminglanguage.com/kmeans-text-clustering/)
 
 TODO - Break some of these functions out into other files?
 
@@ -28,10 +28,19 @@ TODO - Some of the answers still have stop words in them (e.g. the liver, an ele
 
 TODO - Do I need all these re.complie lines?
 
+TODO - Add a SQL schema file
 ### Stretch goals
 -Knowledge analyzer like Roger Craig made
 
--Flashcard app (asks you a random answer and after a few seconds shows you the flashcard to see if you know the big ones.  Also the ability to annotate the card so you can explain a reference if it's not immediately obvious)
+-Flashcard app (asks you a random answer and after a few seconds shows you the flashcard to see if you know the big ones.  Also the ability to annotate the card so you can explain a reference if it's not immediately obvious) (Might want to reshape the word clouds for phone screen sizes)
+
+-Perhaps the best way to do flashcards is to do title-less word clouds and then turn them into a spaced repitition deck in Anki (this lacks the notation element which would be nice)
 
 ### Helpful links
 https://www.reddit.com/r/Jeopardy/comments/9rr8yg/archive_of_categorized_questions/ (Not used any of this code...yet)
+https://www.reddit.com/r/Jeopardy/comments/768qv2/trivia_trainer_my_attempt_at_roger_craigs/
+https://en.wikipedia.org/wiki/Leitner_system
+https://en.wikipedia.org/wiki/Anki_(software)
+https://en.wikipedia.org/wiki/Roger_Craig_%28Jeopardy!_contestant%29
+https://www.reddit.com/r/Jeopardy/comments/7xjthd/how_to_sort_clues_into_categories_and/ ( ROGER CRAIG ACTUALLY RESPONDS HERE )
+https://vimeo.com/48070812

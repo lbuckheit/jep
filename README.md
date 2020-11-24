@@ -10,6 +10,8 @@ SQL Stuff
 
 .mode Column
 
+.headers on
+
 -Count number of rows
 
 SELECT COUNT(\*) FROM answers;

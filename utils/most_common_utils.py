@@ -5,7 +5,7 @@ from string import Template
 
 # Getting the list of most common answers for API processing and initial DB populations
 def get_most_common():
-  con = sqlite3.connect('./data/jep.db')
+  con = sqlite3.connect('../data/jep.db')
   cursor = con.cursor()
   # My arbitrary threshold for which answers to include is a min. of one occurance per season (23 seasons in the DB)
   query = 'SELECT answer FROM answers GROUP BY answer HAVING COUNT(answer) >= 23 ORDER BY COUNT(answer) DESC;'
@@ -26,7 +26,7 @@ def get_most_common():
 
 # For filling the DB with every answer, because the API results will ignore NNEs (e.g. hydrogen, blue, 7)
 def initially_populate_table(initial_insertions):
-  con = sqlite3.connect('./data/jep.db')
+  con = sqlite3.connect('../data/jep.db')
   cursor = con.cursor()
   for answer in initial_insertions:
     answer = answer.replace("'", "''") # Escape single quotes for DB insert purposes
@@ -38,7 +38,7 @@ def initially_populate_table(initial_insertions):
 
 # For assigining the entity columns in the DB
 def process_api_response():
-  con = sqlite3.connect('./data/jep.db')
+  con = sqlite3.connect('../data/jep.db')
   cursor = con.cursor()
   with open('data/monkey_learn.json', 'r') as read_file:
     data = json.load(read_file)
@@ -73,7 +73,7 @@ def update_entity_columns():
   # ORGANIZATION SHOULD ALSO be LOCATION: Liverpool, Plymouth
   # ORGANIZATION SHOULD ONLY be UNCATEGORIZED: ABBA, Islam, East of Eden, Brave New World, Animal House, Wings, Star Trek, 
 
-  con = sqlite3.connect('./data/jep.db')
+  con = sqlite3.connect('../data/jep.db')
   cursor = con.cursor()
 
   # First want to set NNEs with the heuristic that single letters and words with no capital letters are probably NNEs

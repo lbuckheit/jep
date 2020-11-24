@@ -52,7 +52,7 @@ def lemmatize_sentence(sentence):
   return ' '.join(lemmatized_sentence)
 
 def get_clues(answer):
-  con = sqlite3.connect('./data/jep.db')
+  con = sqlite3.connect('../data/jep.db')
   cursor = con.cursor()
   query = 'SELECT * FROM answers WHERE answer="' + answer + '"'
   clues = []
@@ -87,12 +87,12 @@ def merge_clues(clues):
 
 def write_word_cloud_to_file(answer, clues, entity):
   words = merge_clues(clues)
-  wordcloud = WordCloud(width = 400, height = 800, background_color = 'black', min_font_size = 10).generate(words) 
+  wordcloud = WordCloud(width = 800, height = 400, background_color = 'black', min_font_size = 10).generate(words) 
   plt.figure(figsize = (8, 8), facecolor = None) 
   plt.imshow(wordcloud) 
   plt.axis('off') 
   title = answer + ' | n = ' + str(len(clues))
   plt.title(title, fontsize = 35)
   plt.tight_layout(pad = 0) 
-  plt.savefig('./word_clouds/{}/{}.png'.format(entity.lower(), answer))
+  plt.savefig('../word_clouds/{}/{}.png'.format(entity.lower(), answer))
   plt.close()
