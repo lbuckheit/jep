@@ -1,7 +1,13 @@
 import sqlite3
+import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from sklearn.metrics import adjusted_rand_score
+from sklearn.decomposition import PCA
+
+from sklearn import metrics
+from scipy.spatial.distance import cdist
+import numpy as np
 
 documents = ["This little kitty came to play when I was eating at a restaurant.",
              "Merley has the best squooshy kitten belly.",
@@ -18,7 +24,7 @@ query = 'SELECT * FROM answers WHERE seasonid="30";'
 
 documents = []
 for index, row in enumerate(cursor.execute(query)):
-  if index > 500:
+  if index > 2500:
     break
 
   answer = row[0]
@@ -31,11 +37,47 @@ for index, row in enumerate(cursor.execute(query)):
   documents.append(doc)
 
 vectorizer = TfidfVectorizer(stop_words='english')
-X = vectorizer.fit_transform(documents)
+Y = vectorizer.fit_transform(documents).todense()
 
-true_k = 40
+# pca = PCA(n_components=2).fit(Y)
+# data2D = pca.transform(Y)
+# # plt.scatter(data2D[:,0], data2D[:,1], c='blue')
+# # plt.show()    
+
+# x1 = data2D[:,0]
+# x2 = data2D[:,1]
+
+# plt.plot()
+# # plt.xlim([0, 10])
+# # plt.ylim([0, 10])
+# plt.title('Dataset')
+# plt.scatter(x1, x2)
+# plt.show()
+
+# # create new plot and data
+# plt.plot()
+# X = np.array(list(zip(x1, x2))).reshape(len(x1), 2)
+# colors = ['b', 'g', 'r']
+# markers = ['o', 'v', 's']
+
+# # k means determine k
+# distortions = []
+# K = range(10,100)
+# for k in K:
+#     kmeanModel = KMeans(n_clusters=k).fit(X)
+#     kmeanModel.fit(X)
+#     distortions.append(sum(np.min(cdist(X, kmeanModel.cluster_centers_, 'euclidean'), axis=1)) / X.shape[0])
+
+# # Plot the elbow
+# plt.plot(K, distortions, 'bx-')
+# plt.xlabel('k')
+# plt.ylabel('Distortion')
+# plt.title('The Elbow Method showing the optimal k')
+# plt.show()
+
+true_k = 35
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
-model.fit(X)
+model.fit(Y)
 
 for idx, doc in enumerate(documents):
   cluster = model.labels_[idx]
@@ -52,4 +94,5 @@ for idx, doc in enumerate(documents):
 #     terms_string = ''
 #     for ind in order_centroids[i, :10]:
 #         terms_string += terms[ind] + ', '
-#     print(terms_string)
+#     print(terms_string
+
