@@ -19,14 +19,22 @@ with open('mc_cluster_docs.json', 'r', encoding="utf-8") as f:
 vectorizer = TfidfVectorizer(stop_words='english')
 Y = vectorizer.fit_transform(documents).todense()
 
-true_k = 35 # 35 Seemed to work pretty well @ 2500 clues
-model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
+true_k = 40 # 35 Seemed to work pretty well @ 2500 clues, so just trying stuff in a range around there
+model = KMeans(n_clusters=true_k, init='k-means++', max_iter=250, n_init=1)
 model.fit(Y)
 
-for idx, doc in enumerate(doc_ids):
+cluster_obj = {}
+for i in range(0, true_k):
+  cluster_obj[i] = { 'answers': [] }
+
+for idx, doc_id in enumerate(doc_ids):
   cluster = model.labels_[idx]
-  if cluster == 15:
-    print(doc)
+  cluster_obj[cluster]['answers'].append(doc_id)
+  # if cluster == 5:
+  #   print(doc_id)
+
+with open('cluster_poc.json', 'w', encoding="utf-8") as f:
+  json.dump(cluster_obj, f)
 
 # print("Top terms per cluster:")
 # order_centroids = model.cluster_centers_.argsort()[:, ::-1]
