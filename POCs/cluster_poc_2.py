@@ -9,22 +9,13 @@ from sklearn import metrics
 from scipy.spatial.distance import cdist
 import numpy as np
 
-documents = ["This little kitty came to play when I was eating at a restaurant.",
-             "Merley has the best squooshy kitten belly.",
-             "Google Translate app is incredible.",
-             "If you open 100 tab in google you get a smiley face.",
-             "Best cat photo I've ever taken.",
-             "Climbing ninja cat.",
-             "Impressed with google map feedback.",
-             "Key promoter extension for Google Chrome."]
-
 con = sqlite3.connect('../data/jep.db')
 cursor = con.cursor()
 query = 'SELECT * FROM answers WHERE seasonid="30";'
 
 documents = []
 for index, row in enumerate(cursor.execute(query)):
-  if index > 2500:
+  if index > 6000:
     break
 
   answer = row[0]
@@ -39,6 +30,7 @@ for index, row in enumerate(cursor.execute(query)):
 vectorizer = TfidfVectorizer(stop_words='english')
 Y = vectorizer.fit_transform(documents).todense()
 
+# **** THIS PORTION IS USED TO DETERMINE HOW MANY CLUSTERS BASED ON VISUAL OBSERVATION OF THE ELBOW GRAPH.  THEN YOU PLUG IN THE SELECTED VALUE AS true_k ****
 # pca = PCA(n_components=2).fit(Y)
 # data2D = pca.transform(Y)
 # # plt.scatter(data2D[:,0], data2D[:,1], c='blue')
@@ -75,13 +67,13 @@ Y = vectorizer.fit_transform(documents).todense()
 # plt.title('The Elbow Method showing the optimal k')
 # plt.show()
 
-true_k = 35
+true_k = 40 # 35 Seemed to work pretty well @ 2500 clues
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(Y)
 
 for idx, doc in enumerate(documents):
   cluster = model.labels_[idx]
-  if cluster == 2:
+  if cluster == 1:
     print(doc)
   # print(documents[idx])
   # print(model.labels_[idx])
